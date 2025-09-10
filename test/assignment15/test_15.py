@@ -1,8 +1,9 @@
 import unittest
 import sys
 import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../src/assigment15")))
-from util import count_word_occurrences
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../src/assignmant15")))
+from util import  count_word_occurrences
+
 
 class TestWordCountUtil(unittest.TestCase):
     def test_sample_case(self):
@@ -22,6 +23,12 @@ class TestWordCountUtil(unittest.TestCase):
         distinct_count, occurrences = count_word_occurrences(words)
         self.assertEqual(distinct_count, 1)
         self.assertEqual(occurrences, [3])
+
+    def test_mixed_case(self):
+        words = ["apple", "banana", "apple", "cherry", "banana", "apple"]
+        distinct_count, occurrences = count_word_occurrences(words)
+        self.assertEqual(distinct_count, 3)
+        self.assertEqual(occurrences, [3, 2, 1])
 
 if __name__ == "__main__":
     unittest.main()
