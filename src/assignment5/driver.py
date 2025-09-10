@@ -1,12 +1,10 @@
-from util import merge_the_tools
+from util import print_formatted
 
 def main():
-    s = input("Enter the string: ").strip()
-    k = int(input("Enter k (substring size): ").strip())
-
-    result = merge_the_tools(s, k)
-    for item in result:
-        print(item)
+    n = int(input("Enter an integer: ").strip())
+    lines = print_formatted(n)
+    for line in lines:
+        print(line)
 
 if __name__ == "__main__":
     main()
