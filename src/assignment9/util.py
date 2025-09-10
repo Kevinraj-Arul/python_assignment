@@ -1,7 +1,22 @@
-from datetime import datetime
+import math
 
-def time_delta(t1: str, t2: str) -> int:
-    fmt = "%a %d %b %Y %H:%M:%S %z"
-    dt1 = datetime.strptime(t1, fmt)
-    dt2 = datetime.strptime(t2, fmt)
-    return abs(int((dt1 - dt2).total_seconds()))
+def floor_array(arr):
+    """Return a list containing the floor of each element in arr."""
+    result = []
+    for x in arr:
+        result.append(math.floor(x))
+    return result
+
+def ceil_array(arr):
+    """Return a list containing the ceiling of each element in arr."""
+    result = []
+    for x in arr:
+        result.append(math.ceil(x))
+    return result
+
+def rint_array(arr):
+    """Return a list containing the nearest integer (round) of each element in arr."""
+    result = []
+    for x in arr:
+        result.append(round(x))
+    return result

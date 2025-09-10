@@ -1,11 +1,12 @@
-from util import time_delta
+from util import floor_array, ceil_array, rint_array
 
 def main():
-    t = int(input("Enter number of test cases: ").strip())
-    for _ in range(t):
-        t1 = input("Enter first timestamp: ").strip()
-        t2 = input("Enter second timestamp: ").strip()
-        print(time_delta(t1, t2))
+    arr = input("Enter space-separated floats: ").split()
+    arr = [float(x) for x in arr]
+
+    print(floor_array(arr))
+    print(ceil_array(arr))
+    print(rint_array(arr))
 
 if __name__ == "__main__":
     main()

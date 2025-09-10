@@ -3,28 +3,28 @@ import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../src/assignment9")))
 
-from util import time_delta
+from util import floor_array, ceil_array, rint_array
 
-class TestTimeDelta(unittest.TestCase):
-    def test_sample_case1(self):
-        t1 = "Sun 10 May 2015 13:54:36 -0700"
-        t2 = "Sun 10 May 2015 13:54:36 -0000"
-        self.assertEqual(time_delta(t1, t2), 25200)
+class TestRoundUtil(unittest.TestCase):
+    def setUp(self):
+        self.test_data = [1.1, 2.2, 3.3, 4.4, 5.5, 6.6, 7.7, 8.8, 9.9]
 
-    def test_sample_case2(self):
-        t1 = "Sat 02 May 2015 19:54:36 +0530"
-        t2 = "Fri 01 May 2015 13:54:36 -0000"
-        self.assertEqual(time_delta(t1, t2), 88200)
+    def test_floor(self):
+        expected = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        self.assertEqual(floor_array(self.test_data), expected)
 
-    def test_same_timestamp(self):
-        t1 = "Mon 01 Jan 2024 00:00:00 +0000"
-        t2 = "Mon 01 Jan 2024 00:00:00 +0000"
-        self.assertEqual(time_delta(t1, t2), 0)
+    def test_ceil(self):
+        expected = [2, 3, 4, 5, 6, 7, 8, 9, 10]
+        self.assertEqual(ceil_array(self.test_data), expected)
 
-    def test_different_timezone_same_moment(self):
-        t1 = "Mon 01 Jan 2024 12:00:00 +0000"
-        t2 = "Mon 01 Jan 2024 17:30:00 +0530"
-        self.assertEqual(time_delta(t1, t2), 0)
+    def test_rint(self):
+        expected = [1, 2, 3, 4, 6, 7, 8, 9, 10]
+        self.assertEqual(rint_array(self.test_data), expected)
+
+    def test_empty(self):
+        self.assertEqual(floor_array([]), [])
+        self.assertEqual(ceil_array([]), [])
+        self.assertEqual(rint_array([]), [])
 
 if __name__ == "__main__":
     unittest.main()
